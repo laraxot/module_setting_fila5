@@ -1,0 +1,21 @@
+{
+    "name": "Setting",
+    "alias": "setting",
+    "description": "System Settings Module for Quaeris Fila5 Mono",
+    "keywords": [
+        "settings",
+        "configuration",
+        "module"
+    ],
+    "priority": "0",
+    "providers": [
+        "Modules\\Setting\\Providers\\SettingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "nwidart": {
+        "enabled": true,
+        "publish": false
+    }
+}
