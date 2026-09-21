@@ -26,7 +26,7 @@ class DownloadAction
     public function execute(string $connectionName): BinaryFileResponse
     {
         /**
-         * @var array
+         * @var array<string, mixed>
          */
         $db = config('database.connections.'.$connectionName);
 

@@ -8,28 +8,27 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Sushi\Sushi;
 
 use function Safe\json_encode;
 
-use Sushi\Sushi;
-
 /**
- * @property string   $name
- * @property string   $driver
- * @property string   $host
- * @property int      $port
- * @property string   $database
- * @property string   $username
- * @property string   $password
- * @property string   $charset
- * @property string   $collation
- * @property string   $prefix
- * @property bool     $strict
- * @property string   $engine
- * @property array    $options
- * @property string   $status
- * @property Carbon   $created_at
- * @property Carbon   $updated_at
+ * @property string $name
+ * @property string $driver
+ * @property string $host
+ * @property int $port
+ * @property string $database
+ * @property string $username
+ * @property string $password
+ * @property string $charset
+ * @property string $collation
+ * @property string $prefix
+ * @property bool $strict
+ * @property string $engine
+ * @property array<string, mixed> $options
+ * @property string $status
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property int|null $id
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection newModelQuery()
@@ -90,6 +89,9 @@ class DatabaseConnection extends Model
         ];
     }
 
+    /**
+     * @return list<array<string, mixed>>
+     */
     public function getRows(): array
     {
         /** @var array<string, mixed>|mixed $connections */

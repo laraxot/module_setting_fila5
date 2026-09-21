@@ -24,12 +24,4 @@ class Dashboard extends XotBaseDashboard
     {
         return ['a' => 'b'];
     }
-
-    // public function mount(): void {
-    //     $user = auth()->user();
-    //     // @phpstan-ignore-next-line method.nonObject
-    //     if(!$user->hasRole('super-admin')){
-    //         redirect('/admin');
-    //     }
-    // }
 }

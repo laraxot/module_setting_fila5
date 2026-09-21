@@ -18,14 +18,6 @@ final class BackupMysql extends XotBasePage
         return app(DownloadAction::class)->execute($connectionName);
     }
 
-    // public function mount(): void {
-    //     $user = auth()->user();
-    //     // @phpstan-ignore-next-line method.nonObject
-    //     if(!$user->hasRole('super-admin')){
-    //         redirect('/admin');
-    //     }
-    // }
-
     /**
      * @return array<string, mixed>
      */
@@ -43,7 +35,7 @@ final class BackupMysql extends XotBasePage
                 }
                 $driver = isset($item['driver']) && is_string($item['driver']) ? $item['driver'] : '';
 
-                return 'mysql' === $driver;
+                return $driver === 'mysql';
             }
         );
 
