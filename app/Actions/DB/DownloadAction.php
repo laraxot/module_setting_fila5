@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Process as LaravelProcess;
 use Illuminate\Support\Facades\Storage;
 use Modules\Xot\Actions\File\CreateDirectoryForFilenameAction;
 use Modules\Xot\Actions\File\FixPathAction;
+use RuntimeException;
 use Spatie\QueueableAction\QueueableAction;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -32,7 +33,7 @@ class DownloadAction
 
         // Type narrowing: ensure $db is array with required keys
         if (! is_array($db)) {
-            throw new \RuntimeException("Database configuration for connection '{$connectionName}' is not an array");
+            throw new RuntimeException("Database configuration for connection '{$connectionName}' is not an array");
         }
 
         $username = isset($db['username']) && is_string($db['username']) ? $db['username'] : '';
@@ -40,12 +41,12 @@ class DownloadAction
         $database = isset($db['database']) && is_string($db['database']) ? $db['database'] : '';
 
         $filename = 'backup-'.$connectionName.'-'.Carbon::now()->format('Y-m-d').'.gz';
-        $backup_path = Storage::disk('cache')->path('backup/'.$filename);
-        $backup_path = app(FixPathAction::class)->execute($backup_path);
-        app(CreateDirectoryForFilenameAction::class)->execute($backup_path);
-        $command = sprintf('mysqldump --user=%s --password=%s %s | gzip > %s', $username, $password, $database, $backup_path);
+        $backupPath = Storage::disk('cache')->path('backup/'.$filename);
+        $backupPath = app(FixPathAction::class)->execute($backupPath);
+        app(CreateDirectoryForFilenameAction::class)->execute($backupPath);
+        $command = sprintf('mysqldump --user=%s --password=%s %s | gzip > %s', $username, $password, $database, $backupPath);
         LaravelProcess::run($command);
 
-        return response()->download($backup_path);
+        return response()->download($backupPath);
     }
 }

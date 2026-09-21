@@ -20,7 +20,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(ProfileContract $user, DatabaseConnection $database_connection): bool
+    public function view(ProfileContract $user, DatabaseConnection $_databaseConnection): bool
     {
         return $user->hasPermissionTo('database_connection.view');
     }
@@ -36,7 +36,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(ProfileContract $user, DatabaseConnection $database_connection): bool
+    public function update(ProfileContract $user, DatabaseConnection $_databaseConnection): bool
     {
         return $user->hasPermissionTo('database_connection.update');
     }
@@ -44,7 +44,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(ProfileContract $user, DatabaseConnection $database_connection): bool
+    public function delete(ProfileContract $user, DatabaseConnection $_databaseConnection): bool
     {
         return $user->hasPermissionTo('database_connection.delete');
     }
@@ -52,7 +52,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(ProfileContract $user, DatabaseConnection $database_connection): bool
+    public function restore(ProfileContract $user, DatabaseConnection $_databaseConnection): bool
     {
         return $user->hasPermissionTo('database_connection.restore');
     }
@@ -60,7 +60,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(ProfileContract $user, DatabaseConnection $database_connection): bool
+    public function forceDelete(ProfileContract $user, DatabaseConnection $_databaseConnection): bool
     {
         return $user->hasPermissionTo('database_connection.forceDelete');
     }
