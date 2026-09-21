@@ -11,7 +11,12 @@ abstract class SettingBasePolicy
 {
     use HandlesAuthorization;
 
-    public function before(ProfileContract $user, string $_ability): ?bool
+    /**
+     * Firma Laravel Gate: $ability è richiesto dal contratto, non usato qui.
+     *
+     * @SuppressWarnings("PHPMD.UnusedFormalParameter")
+     */
+    public function before(ProfileContract $user, string $ability): ?bool
     {
         if ($user->hasRole('super-admin')) {
             return true;

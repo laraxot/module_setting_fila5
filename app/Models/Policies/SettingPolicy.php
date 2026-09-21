@@ -7,6 +7,11 @@ namespace Modules\Setting\Models\Policies;
 use Modules\Setting\Models\Setting;
 use Modules\Xot\Contracts\ProfileContract;
 
+/**
+ * Autorizzazione per permesso: il modello in firma è il contratto Gate.
+ *
+ * @SuppressWarnings("PHPMD.UnusedFormalParameter")
+ */
 class SettingPolicy extends SettingBasePolicy
 {
     /**
@@ -20,7 +25,7 @@ class SettingPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(ProfileContract $user, Setting $_setting): bool
+    public function view(ProfileContract $user, Setting $setting): bool
     {
         return $user->hasPermissionTo('setting.view');
     }
@@ -36,7 +41,7 @@ class SettingPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(ProfileContract $user, Setting $_setting): bool
+    public function update(ProfileContract $user, Setting $setting): bool
     {
         return $user->hasPermissionTo('setting.update');
     }
@@ -44,7 +49,7 @@ class SettingPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(ProfileContract $user, Setting $_setting): bool
+    public function delete(ProfileContract $user, Setting $setting): bool
     {
         return $user->hasPermissionTo('setting.delete');
     }
@@ -52,7 +57,7 @@ class SettingPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(ProfileContract $user, Setting $_setting): bool
+    public function restore(ProfileContract $user, Setting $setting): bool
     {
         return $user->hasPermissionTo('setting.restore');
     }
@@ -60,7 +65,7 @@ class SettingPolicy extends SettingBasePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(ProfileContract $user, Setting $_setting): bool
+    public function forceDelete(ProfileContract $user, Setting $setting): bool
     {
         return $user->hasPermissionTo('setting.forceDelete');
     }
