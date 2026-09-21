@@ -7,4 +7,4 @@ declare(strict_types=1);
  * Ogni file test dichiara uses(\Modules\Setting\Tests\TestCase::class).
  */
 
-pest()->extend(\Modules\Setting\Tests\TestCase::class)->in(__DIR__.'/Unit', __DIR__.'/Feature');
+pest()->extend(Modules\Setting\Tests\TestCase::class)->in(__DIR__.'/Unit', __DIR__.'/Feature');

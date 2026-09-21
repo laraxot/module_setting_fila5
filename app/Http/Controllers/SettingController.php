@@ -14,7 +14,7 @@ class SettingController extends Controller
     /**
      * Display a listing of the resource.
      */
-   public function index(): View
+    public function index(): View
     {
         /**
          * @phpstan-var view-string
@@ -27,7 +27,7 @@ class SettingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-   public function create(): View
+    public function create(): View
     {
         /**
          * @phpstan-var view-string
@@ -39,7 +39,7 @@ class SettingController extends Controller
 
     /**
      * Store a newly created resource in storage.
-    *
+     *
      * $request is part of the standard Laravel resource-controller signature.
      *
      * @SuppressWarnings("PHPMD.UnusedFormalParameter")
@@ -68,7 +68,7 @@ class SettingController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-    *
+     *
      * $id is part of the standard Laravel resource-controller signature.
      *
      * @SuppressWarnings("PHPMD.UnusedFormalParameter")
@@ -85,7 +85,7 @@ class SettingController extends Controller
 
     /**
      * Update the specified resource in storage.
-    *
+     *
      * $request and $id are part of the standard Laravel resource-controller signature.
      *
      * @SuppressWarnings("PHPMD.UnusedFormalParameter")
