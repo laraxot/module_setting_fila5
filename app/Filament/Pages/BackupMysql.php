@@ -35,7 +35,7 @@ final class BackupMysql extends XotBasePage
                 }
                 $driver = isset($item['driver']) && is_string($item['driver']) ? $item['driver'] : '';
 
-                return 'mysql' === $driver;
+                return $driver === 'mysql';
             }
         );
 
