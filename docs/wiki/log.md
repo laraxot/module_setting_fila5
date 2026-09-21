@@ -1,45 +1,20 @@
 ---
-<<<<<<< HEAD
-title: "Setting Wiki Activity Log"
-module: "Setting"
----
-
-# Setting - Wiki Activity Log
-
-## [2026-05-11] Wiki Structure Created
-
-- Created wiki structure: rules/, skills/, commands/, memories/, concepts/
-- Created INDEX.md for each section
-- Created module index.md
-- Ready for on-demand loading via QMD
-
-=======
-title: "Activity Log"
-module: "Setting"
+title: "Activity log"
+type: log
+module: Setting
+tags: [setting, phpstan, wiki]
+created: 2026-05-11
+updated: 2026-09-21
 ---
 
 # Activity Log — Setting
 
-> **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
+## [2026-09-21] phpstan | Resource non sovrascrive getFormSchema final
 
-## Log Entries
+- `DatabaseConnectionResource` non override più `getFormSchema()`/`table()`.
+- Schema in `DatabaseConnectionForm` (istanza) e `DatabaseConnectionsTable`.
+- Gate: fatal `Cannot override final method XotBaseResource::getFormSchema()`.
 
-_No activity yet. Start by ingesting raw documents._
+## [2026-05-11] Wiki structure created
 
-### Format
-
-```
-[YYYY-MM-DD HH:MM:SS UTC] [OPERATION] Description
-```
-
-**Operations:**
-- `INGEST` — Added raw document to wiki
-- `QUERY` — Answered question from wiki
-- `LINT` — Maintained wiki quality
-- `UPDATE` — Modified existing wiki page
-
----
-
-**Last Activity:** None  
-**Total Operations:** 0
->>>>>>> laraxot/dev
+- Created wiki structure: rules/, skills/, commands/, memories/, concepts/
