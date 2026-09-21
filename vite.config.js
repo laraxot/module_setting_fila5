@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import { readdirSync, statSync } from 'fs';
@@ -55,3 +56,33 @@ export default defineConfig({
 //    'Modules/Setting/resources/assets/sass/app.scss',
 //    'Modules/Setting/resources/assets/js/app.js',
 //];
+=======
+const dotenvExpand = require('dotenv-expand');
+dotenvExpand(require('dotenv').config({ path: '../../.env'/*, debug: true*/}));
+
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig(
+    {
+        build: {
+            outDir: '../../public/build-setting',
+            emptyOutDir: true,
+            manifest: true,
+        },
+        plugins: [
+        laravel(
+            {
+                publicDirectory: '../../public',
+                buildDirectory: 'build-setting',
+                input: [
+                __dirname + '/resources/assets/sass/app.scss',
+                __dirname + '/resources/assets/js/app.js'
+                ],
+                refresh: true,
+            }
+        ),
+    ],
+    }
+);
+>>>>>>> laraxot/dev

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Setting\Providers;
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
@@ -140,4 +141,18 @@ class SettingServiceProvider extends ServiceProvider
     {
         return [];
     }
+=======
+use Modules\Xot\Providers\XotBaseServiceProvider;
+
+/**
+ * ---.
+ */
+class SettingServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'Setting';
+
+    protected string $module_dir = __DIR__;
+
+    protected string $module_ns = __NAMESPACE__;
+>>>>>>> laraxot/dev
 }

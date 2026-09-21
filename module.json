@@ -1,6 +1,7 @@
 {
     "name": "Setting",
     "alias": "setting",
+<<<<<<< HEAD
     "description": "System Settings Module for Quaeris Fila5 Mono",
     "keywords": [
         "settings",
@@ -18,4 +19,14 @@
         "enabled": true,
         "publish": false
     }
+=======
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Setting\\Providers\\SettingServiceProvider",
+        "Modules\\Setting\\Providers\\Filament\\AdminPanelProvider"
+    ],
+    "files": []
+>>>>>>> laraxot/dev
 }

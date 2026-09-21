@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Setting\Providers;
 
+<<<<<<< HEAD
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -39,4 +40,17 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('api')->prefix('api')->name('api.')->group(module_path($this->name, '/routes/api.php'));
     }
+=======
+use Modules\Xot\Providers\XotBaseRouteServiceProvider;
+
+class RouteServiceProvider extends XotBaseRouteServiceProvider
+{
+    protected string $moduleNamespace = 'Modules\Setting\Http\Controllers';
+
+    protected string $module_dir = __DIR__;
+
+    protected string $module_ns = __NAMESPACE__;
+
+    public string $name = 'Setting';
+>>>>>>> laraxot/dev
 }
