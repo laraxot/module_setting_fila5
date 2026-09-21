@@ -94,10 +94,8 @@ class DatabaseConnection extends Model
      */
     public function getRows(): array
     {
-        /** @var array<string, mixed>|mixed $connections */
         $connections = config('database.connections');
-
-        if (! is_array($connections) || empty($connections)) {
+        if (! is_array($connections) || $connections === []) {
             return [];
         }
 

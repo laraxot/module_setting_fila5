@@ -19,27 +19,24 @@ final class BackupMysql extends XotBasePage
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{connections: array<string, array<int|string, mixed>>}
      */
     protected function getViewData(): array
     {
         $connections = config('database.connections');
         Assert::isArray($connections);
 
-        $connections = array_filter(
-            $connections,
-            static function (mixed $item): bool {
-                // Type narrowing: ensure item is array with driver key
-                if (! is_array($item)) {
-                    return false;
-                }
-                $driver = isset($item['driver']) && is_string($item['driver']) ? $item['driver'] : '';
-
-                return $driver === 'mysql';
+        $mysqlConnections = [];
+        foreach ($connections as $name => $item) {
+            if (! is_string($name) || ! is_array($item)) {
+                continue;
             }
-        );
+            $driver = $item['driver'] ?? null;
+            if ($driver === 'mysql') {
+                $mysqlConnections[$name] = $item;
+            }
+        }
 
-        // $connections=collect($connections)->keyBy('database');
-        return ['connections' => $connections];
+        return ['connections' => $mysqlConnections];
     }
 }

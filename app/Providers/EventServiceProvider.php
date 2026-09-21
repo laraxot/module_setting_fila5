@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /**
  * Provides event handling configuration for the Setting module.
  *
@@ -7,8 +8,6 @@
  * handling for the Setting module. It indicates that events should be
  * discovered, but does not define any specific event listeners.
  */
-
-declare(strict_types=1);
 
 namespace Modules\Setting\Providers;
 

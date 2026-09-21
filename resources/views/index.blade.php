@@ -1,4 +1,8 @@
-nds('setting::layouts.master')
+<?php
+
+declare(strict_types=1);
+?>
+@extends('setting::layouts.master')
 
 @section('content')
     <h1>Hello World</h1>

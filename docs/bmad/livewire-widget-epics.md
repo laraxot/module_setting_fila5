@@ -8,4 +8,4 @@ related:
 
 # Epics Setting
 
-Nessun epic conversione.
+Nessun epic di conversione: zero candidati A/B/C verificati in [livewire-inventory.md](./livewire-inventory.md).

@@ -100,3 +100,17 @@ flagging it here for a future story instead.
 Gate closed for 2026-09-04: PHPStan 0/0, PHPMD 0 findings, PHPInsights
 unavailable (documented, project-wide), Pest 0/0 (no tests exist), coverage
 baseline 0% (accurately reported, not fixed with fake tests).
+
+## 2026-09-21 — `declare(strict_types=1)` sulle blade
+
+**Perché**: ogni `.php`/`.blade.php` del modulo deve aprire in strict. Le 6
+viste scaffold erano sprovviste; due erano anche **troncate in testa**
+(`index.blade.php` iniziava con `nds(...)` invece di `@extends`,
+`layouts/master.blade.php` con `TYPE html>` invece di `<!DOCTYPE html>`).
+
+**Fatto**: prepend del blocco `<?php` / `declare(strict_types=1);` / `?>`
+senza sostituire byte. Ripristinato `@extends` e `<!DOCTYPE html>`. Markup
+invariato. `mixed` in `app/` resta ultima spiaggia (config DB /
+`array<string, mixed>` ide-helper Eloquent).
+
+**Non toccato**: nessuna conversione Livewire; nessun PrivacyPolicyWidget.

@@ -15,9 +15,9 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che il modello DatabaseConnection possa essere istanziato.
      */
-    public function testDatabaseConnectionModelCanBeInstantiated(): void
+    public function test_database_connection_model_can_be_instantiated(): void
     {
-        $connection = new DatabaseConnection();
+        $connection = new DatabaseConnection;
 
         $this->assertInstanceOf(DatabaseConnection::class, $connection);
     }
@@ -25,9 +25,9 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che i casts siano definiti correttamente.
      */
-    public function testCastsAreConfiguredCorrectly(): void
+    public function test_casts_are_configured_correctly(): void
     {
-        $connection = new DatabaseConnection();
+        $connection = new DatabaseConnection;
 
         $this->assertEquals([
             'port' => 'integer',
@@ -39,10 +39,10 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che il metodo testConnection funzioni correttamente quando la connessione ha successo.
      */
-    public function testTestConnectionSucceeds(): void
+    public function test_test_connection_succeeds(): void
     {
         // Mock PDO instance
-        $pdoMock = \Mockery::mock(\PDO::class);
+        $pdoMock = \Mockery::mock(PDO::class);
 
         // Mock DB facade
         DB::shouldReceive('connection')
@@ -82,7 +82,7 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che il metodo testConnection ritorni false quando la connessione fallisce.
      */
-    public function testTestConnectionFails(): void
+    public function test_test_connection_fails(): void
     {
         // Mock DB facade per simulare un errore di connessione
         DB::shouldReceive('connection')

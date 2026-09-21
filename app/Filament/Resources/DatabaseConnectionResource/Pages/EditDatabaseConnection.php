@@ -34,7 +34,7 @@ class EditDatabaseConnection extends EditRecord
         /** @var DatabaseConnection|null $record */
         $record = $this->record;
 
-        if ($record && 'active' === $record->status) {
+        if ($record && $record->status === 'active') {
             $record->testConnection();
         }
     }

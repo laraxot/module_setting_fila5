@@ -8,4 +8,4 @@ related:
 
 # UX Setting
 
-Nessuna superficie chrome da migrare. Non cambiare layout panel.
+Nessuna superficie chrome da migrare. Non cambiare layout panel. Vedi [livewire-inventory.md](./livewire-inventory.md).
