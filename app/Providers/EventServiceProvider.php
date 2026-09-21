@@ -1,12 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-namespace Modules\Setting\Providers;
-
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
-class EventServiceProvider extends ServiceProvider
-=======
 /**
  * Provides event handling configuration for the Setting module.
  *
@@ -22,7 +15,6 @@ namespace Modules\Setting\Providers;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as BaseEventServiceProvider;
 
 class EventServiceProvider extends BaseEventServiceProvider
->>>>>>> laraxot/dev
 {
     /**
      * The event handler mappings for the application.
@@ -41,13 +33,8 @@ class EventServiceProvider extends BaseEventServiceProvider
     /**
      * Configure the proper event listeners for email verification.
      */
-<<<<<<< HEAD
-   protected function configureEmailVerification(): void
-    {
-=======
     protected function configureEmailVerification(): void
     {
         // ...
->>>>>>> laraxot/dev
     }
 }

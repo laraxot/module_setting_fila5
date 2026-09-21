@@ -1,8 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-
-=======
 declare(strict_types=1);
 
 /*
@@ -19,4 +16,3 @@ declare(strict_types=1);
 // Route::prefix('setting')->group(function() {
 //    Route::get('/', 'SettingController@index');
 // });
->>>>>>> laraxot/dev

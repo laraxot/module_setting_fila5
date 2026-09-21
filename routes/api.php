@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
 use Illuminate\Http\Request;
@@ -21,4 +19,3 @@ use Illuminate\Support\Facades\Route;
 /*
 Route::middleware('auth:api')->get('/setting', fn(Request $request) => $request->user());
 */
->>>>>>> laraxot/dev

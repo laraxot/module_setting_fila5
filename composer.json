@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-    "name": "nwidart/setting",
-    "description": "",
-    "authors": [
-        {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
-=======
     "name": "laraxot/module_setting_fila5",
     "description": "Settings and configuration management module for the Laraxot ecosystem: application preferences, feature toggles, and system parameters.",
     "keywords": [
@@ -26,23 +18,15 @@
         {
             "name": "Marco Sottana",
             "email": "marco.sottana@gmail.com"
->>>>>>> laraxot/dev
         }
     ],
     "extra": {
         "laravel": {
-<<<<<<< HEAD
-            "providers": [],
-            "aliases": {
-
-            }
-=======
             "providers": [
                 "Modules\\Setting\\Providers\\SettingServiceProvider",
                 "Modules\\Setting\\Providers\\Filament\\AdminPanelProvider"
             ],
             "aliases": {}
->>>>>>> laraxot/dev
         }
     },
     "autoload": {
@@ -52,8 +36,6 @@
             "Modules\\Setting\\Database\\Seeders\\": "database/seeders/"
         }
     },
-<<<<<<< HEAD
-=======
     "require": {
         "php": "^8.3"
     },
@@ -93,7 +75,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
->>>>>>> laraxot/dev
     "autoload-dev": {
         "psr-4": {
             "Modules\\Setting\\Tests\\": "tests/"
