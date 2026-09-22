@@ -3,15 +3,13 @@
 declare(strict_types=1);
 
 return [
+    // 'resources' => 'Risorse',
     'navigation' => [
         'name' => 'Database Connection',
         'plural' => 'Database Connections',
         'group' => [
             'name' => 'Settings',
         ],
-        'label' => 'database connection.navigation',
-        'icon' => 'database connection.navigation',
-        'sort' => 6,
     ],
     'label' => 'Database Connection',
     'plural_label' => 'Database Connections',

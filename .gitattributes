@@ -5,13 +5,10 @@
 # Git LFS VIETATO. Binari = blob git normali.
 
 * text=auto
-
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored
-
 CHANGELOG.md export-ignore
-
 # Binary files (regular git blobs — NO git-lfs)
 # `binary` + `!filter` azzera eventuali filtri LFS ereditati
 *.png binary !filter
@@ -32,8 +29,9 @@ CHANGELOG.md export-ignore
 *.phar binary !filter
 *.db binary !filter
 *.sqlite binary !filter
-* text=auto
-*.css linguist-vendored
-*.scss linguist-vendored
-*.js linguist-vendored
-CHANGELOG.md export-ignore
+*.png !text !filter !merge !diff
+*.svg !text !filter !merge !diff
+*.jpg !text !filter !merge !diff
+*.jpeg !text !filter !merge !diff
+*.gif !text !filter !merge !diff
+*.webp !text !filter !merge !diff
