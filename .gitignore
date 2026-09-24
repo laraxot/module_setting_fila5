@@ -78,3 +78,8 @@ cache/
 # Development tools
 .windsurf/
 .cursor/
+
+# Artefatti audit vietati (rule: tests-auditcoverage-forbidden)
+tests/AuditCoverage/
+audit-coverage/
+.claude-audit/
