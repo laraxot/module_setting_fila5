@@ -1,0 +1,56 @@
+---
+<<<<<<< HEAD
+title: "Setting Wiki Index"
+module: "Setting"
+---
+
+# Setting Module Wiki
+
+## Indices
+- [Rules](rules/INDEX.md)
+- [Skills](skills/INDEX.md)
+- [Commands](commands/INDEX.md)
+- [Memories](memories/INDEX.md)
+- [Concepts](concepts/INDEX.md)
+
+## On-Demand Workflow
+
+```bash
+qmd search "Setting <topic>" --limit 5
+```
+
+---
+*Updated: 2026-05-11*
+=======
+title: "Wiki Index"
+module: "Setting"
+updated: "2026-04-15T08:28:48Z"
+---
+
+# Wiki Index — Setting
+
+> **Purpose:** Content-oriented catalog of all wiki pages in this module.  
+> **Replaces embedding-based RAG at moderate scale (~100 sources).**
+
+## Concepts
+
+_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+
+## Entities
+
+_No entities tracked yet._
+
+## Sources
+
+_No sources ingested yet._
+
+## Comparisons
+
+_No comparisons synthesized yet._
+
+---
+
+**Last Updated:** 2026-04-15T08:28:48Z  
+**Total Pages:** 0  
+**Total Raw Sources:** 0
+>>>>>>> laraxot/dev
