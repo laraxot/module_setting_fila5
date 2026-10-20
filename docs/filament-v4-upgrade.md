@@ -37,7 +37,7 @@ class BackupMysql extends Page
 ```
 
 ### 3. Action Updates
-- `DatabaseBackupTableAction` - Verify table action functionality
+- `DatabaseBackupTableAction` - Verify table action functionality (nota 2026-10-20: non e' registrata in nessuna tabella e il suo `action()` lancia `LogicException`, quindi non c'e' funzionalita' da verificare; il backup vero e' `Pages\BackupMysql` + `Actions\DB\DownloadAction`. Vedi [story](./stories/debug-calls-removal-setting.story.md))
 - Download actions for backup files
 - Database connection testing actions
 

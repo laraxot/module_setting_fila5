@@ -22,11 +22,9 @@ class DatabaseBackupTableAction extends Action
             // ->steps([
             // ])
             ->action(
-                function ($record): void {
-                    dddx([
-                        'record' => $record,
-                        // 'data' => $data,
-                    ]);
+                function (): void {
+                    // Non registrata in nessuna tabella. Il dump reale esiste: Actions\DB\DownloadAction (usata da Pages\BackupMysql).
+                    throw new \LogicException('DatabaseBackupTableAction::action() non implementato');
                 }
             );
     }

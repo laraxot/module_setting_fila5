@@ -110,6 +110,6 @@ Dopo la risoluzione, sono state eseguite le seguenti verifiche:
 
 ## Collegamenti
 
-- [Documentazione Conflitti Git del Modulo Setting](conflitti_git.md)
+- [Documentazione Conflitti Git del Modulo Setting](conflitti-git.md)
 - [Documentazione della Classe DatabaseConnection](../Models/DatabaseConnection.md)
 - [Best Practices per la Gestione dei Conflitti Git](../../../../docs/risoluzione_conflitti_git.md) 
