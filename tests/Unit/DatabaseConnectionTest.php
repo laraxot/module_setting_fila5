@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Modules\Setting\Models\DatabaseConnection;
 use PDO;
-use Tests\TestCase;
+use Modules\Setting\Tests\TestCase;
 
 class DatabaseConnectionTest extends TestCase
 {
