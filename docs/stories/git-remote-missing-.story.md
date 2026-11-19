@@ -7,10 +7,11 @@ status: blocked-needs-user-decision
 created: 2026-09-11
 updated: 2026-09-11
 owned_scope:
-  - "laravel/Modules/Setting/docs/stories/git-remote-missing-2026-09-11.story.md"
+  - "laravel/Modules/Setting/docs/stories/git-remote-missing-.story.md"
 related:
-  - setting-quality-gate-2026-09-04.story.md
+  - setting-quality-gate-.story.md
   - ../../../../bashscripts/ai/wiki/rules/git-forward-only.md
+date_originale_nome_file: 2026-09-11
 ---
 
 # Setting: remote 'laraxot' punta a repo GitHub inesistente
@@ -112,7 +113,7 @@ locale di `Modules/Setting` in questo workspace ha **solo 2 commit** e il
 
 Il commit iniziale locale (`e59f820`, 4 settembre 2026, autore "BMAD Quality
 Gate Agent") e' la story gia' esistente
-`setting-quality-gate-2026-09-04.story.md`, che **documenta esplicitamente**:
+`setting-quality-gate-.story.md`, che **documenta esplicitamente**:
 
 > "module .git has no remote configured and is not in
 > docs/chat/github-repos-map.md; push blocked, documented as blocker"
@@ -145,7 +146,7 @@ modulo maturo): impatto sostanziale, non un fix meccanico.
 - **Non** ho fatto merge ne' push.
 - **Non** ho creato nessun repository GitHub.
 - **Non** ho toccato le modifiche non mie gia' presenti nella working tree
-  (`.gitattributes` modificato, `docs/stories/continuation-2026-09-11.story.md`
+  (`.gitattributes` modificato, `docs/stories/continuation-.story.md`
   non tracciato — probabile lavoro di un'altra sessione concorrente, vedi
   `ps aux` con 4 processi `claude` attivi in parallelo al momento
   dell'indagine).

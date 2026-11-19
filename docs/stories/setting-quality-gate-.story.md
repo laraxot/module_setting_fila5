@@ -8,11 +8,12 @@ created: 2026-09-04
 updated: 2026-09-04
 owned_scope:
   - "laravel/Modules/Setting/docs/coverage.md"
-  - "laravel/Modules/Setting/docs/stories/setting-quality-gate-2026-09-04.story.md"
+  - "laravel/Modules/Setting/docs/stories/setting-quality-gate-.story.md"
 related:
   - ../coverage.md
   - ../../../../bashscripts/ai/wiki/rules/pest5-incompatibile-con-phpinsights.md
   - ../../../../bashscripts/ai/wiki/rules/module-work-checklist.md
+date_originale_nome_file: 2026-09-04
 ---
 
 # Setting: chiusura quality-gate (PHPStan/PHPMD/PHPInsights/Pest/coverage)
@@ -101,7 +102,7 @@ Numeri reali, misurati in questa sessione il 2026-09-04:
   censito in `docs/chat/github-repos-map.md`. Non e' stato creato un remote
   o un repository GitHub unilateralmente (decisione infrastrutturale fuori
   scope per un agente di quality-gate). I due file creati da questo task
-  (`docs/coverage.md`, `docs/stories/setting-quality-gate-2026-09-04.story.md`)
+  (`docs/coverage.md`, `docs/stories/setting-quality-gate-.story.md`)
   sono stati comunque aggiunti e committati **localmente** nel `.git` del
   modulo (primo commit del repo) cosi' che il lavoro non vada perso, ma
   **non pushati da nessuna parte** — serve una sessione dedicata/decisione
