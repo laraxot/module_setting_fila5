@@ -33,7 +33,7 @@ Modulo Setting (configurazione, agent methodologies, customizzazione sito). Gest
 
 ## BMAD / Stories
 - [bmad/](./bmad/) — dossier BMAD
-- [stories/](./stories/) — storie feature (setting-quality-gate-2026-09-04.story.md, git-remote-missing, continuation)
+- [stories/](./stories/) — storie feature (setting-quality-gate-.story.md, git-remote-missing, continuation)
 - [stories/debug-calls-removal-setting.story.md](./stories/debug-calls-removal-setting.story.md) — chiamata di debug (dddx) in `DatabaseBackupTableAction`, ora errore esplicito; azione non registrata, decisioni aperte
 
 ## Struttura (sottocartelle)

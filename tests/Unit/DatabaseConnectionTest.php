@@ -7,8 +7,8 @@ namespace Modules\Setting\Tests\Unit;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Modules\Setting\Models\DatabaseConnection;
-use PDO;
 use Modules\Setting\Tests\TestCase;
+use PDO;
 
 class DatabaseConnectionTest extends TestCase
 {
@@ -28,12 +28,18 @@ class DatabaseConnectionTest extends TestCase
     public function test_casts_are_configured_correctly(): void
     {
         $connection = new DatabaseConnection;
+        $casts = $connection->getCasts();
 
-        $this->assertEquals([
-            'port' => 'integer',
-            'strict' => 'boolean',
-            'options' => 'array',
-        ], $connection->getCasts());
+        // Una chiave per asserzione, e non l'array intero: `getCasts()` di
+        // Eloquent **aggiunge** la chiave primaria col suo tipo
+        // (`'id' => 'int'`), quindi un confronto sull'array completo falliva su
+        // una riga che il modello non dichiara e che non ci riguarda. Legare un
+        // test agli interni del framework lo fa fallire al prossimo
+        // aggiornamento, per qualcosa che non e' nostro
+        // (base_quaeris_fila5#241).
+        $this->assertSame('integer', $casts['port']);
+        $this->assertSame('boolean', $casts['strict']);
+        $this->assertSame('array', $casts['options']);
     }
 
     /**
@@ -41,32 +47,51 @@ class DatabaseConnectionTest extends TestCase
      */
     public function test_test_connection_succeeds(): void
     {
-        // Mock PDO instance
-        $pdoMock = \Mockery::mock(PDO::class);
-
-        // Mock DB facade
-        DB::shouldReceive('connection')
-            ->once()
-            ->with('test_connection')
-            ->andReturnSelf();
-
-        DB::shouldReceive('getPdo')
-            ->once()
-            ->andReturn($pdoMock);
-
-        // Mock Config facade
-        Config::shouldReceive('set')
-            ->once()
-            ->with('database.connections.test_connection', \Mockery::type('array'))
-            ->andReturnNull();
+        // ## Perche' qui non si mocka niente
+        //
+        // Questo test mockava le facade `DB` e `Config`, e non poteva
+        // funzionare per due ragioni indipendenti:
+        //
+        // 1. `Config::shouldReceive('set')` rende la facade un mock **stretto**,
+        //    e `testConnection()` oltre a scrivere **legge**
+        //    (`config('database.connections')`): la lettura non prevista
+        //    falliva con «Received ..._Repository::get(), but no expectations
+        //    were specified». Il mock accusava il codice di fare una cosa
+        //    legittima.
+        // 2. `DB::shouldReceive(...)` sopravvive al corpo del test: il finto
+        //    resta installato nel container, e la chiusura di
+        //    `DatabaseTransactions`, dentro `parent::tearDown()`, scorre
+        //    `DB::getConnections()`. Nessun test prevede quella chiamata, e il
+        //    fallimento arrivava **dopo** il test, da XotBaseTestCase.
+        //    `Mockery::close()` non basta: verifica le aspettative, non
+        //    disinstalla la facade.
+        //
+        // E soprattutto: mockare `getPdo()` per farlo restituire un PDO finto
+        // non verifica **niente** di `testConnection()`, il cui unico lavoro e'
+        // aprire una connessione vera e dire se ci riesce. Il database di test
+        // c'e' — lo usa questa stessa suite — quindi si prova contro quello
+        // (base_quaeris_fila5#241).
+        // Accessori tipizzati, non `Config::get()` piu' un cast: `get()`
+        // restituisce `mixed`, e `(int) $mixed` e' il genere di cast che
+        // zittisce l'analisi invece di dirle qualcosa. `Config::integer()` e
+        // `Config::string()` dichiarano cosa ci si aspetta e lanciano se il
+        // valore non e' quello.
+        $host = Config::string('database.connections.mysql.host');
+        // `Config::integer()` qui rifiuta, e ha ragione: `config/database.php`
+        // prende la porta da `env('DB_PORT')` e non la converte, quindi il
+        // valore e' la **stringa** '3306'. Si legge come stringa e si converte
+        // da stringa — che e' una conversione dichiarata, non un cast su
+        // `mixed`.
+        $porta = (int) Config::string('database.connections.mysql.port');
+        $database = Config::string('database.connections.mysql.database');
 
         $connection = new DatabaseConnection([
             'driver' => 'mysql',
-            'host' => 'localhost',
-            'port' => 3306,
-            'database' => 'test_db',
-            'username' => 'user',
-            'password' => 'password',
+            'host' => $host,
+            'port' => $porta,
+            'database' => $database,
+            'username' => Config::string('database.connections.mysql.username'),
+            'password' => Config::string('database.connections.mysql.password'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -77,6 +102,11 @@ class DatabaseConnectionTest extends TestCase
         $result = $connection->testConnection();
 
         $this->assertTrue($result);
+
+        // La connessione di prova e' stata registrata davvero.
+        $registrata = Config::get('database.connections.test_connection');
+        $this->assertIsArray($registrata);
+        $this->assertSame($database, $registrata['database']);
     }
 
     /**
@@ -84,25 +114,13 @@ class DatabaseConnectionTest extends TestCase
      */
     public function test_test_connection_fails(): void
     {
-        // Mock DB facade per simulare un errore di connessione
-        DB::shouldReceive('connection')
-            ->once()
-            ->with('test_connection')
-            ->andReturnSelf();
-
-        DB::shouldReceive('getPdo')
-            ->once()
-            ->andThrow(new \Exception('Connection failed'));
-
-        // Mock Config facade
-        Config::shouldReceive('set')
-            ->once()
-            ->with('database.connections.test_connection', \Mockery::type('array'))
-            ->andReturnNull();
-
+        // Vedi il test gemello: niente mock. Un host che non si risolve fa
+        // fallire la connessione per davvero, che e' esattamente il caso che
+        // questo test deve coprire — e lo copre senza simulare l'eccezione che
+        // pretende di osservare.
         $connection = new DatabaseConnection([
             'driver' => 'mysql',
-            'host' => 'invalid_host',
+            'host' => 'host.che.non.esiste.invalid',
             'port' => 3306,
             'database' => 'test_db',
             'username' => 'user',
@@ -119,6 +137,28 @@ class DatabaseConnectionTest extends TestCase
      */
     protected function tearDown(): void
     {
+        // Le facade mockate vanno **restituite** prima della chiusura della
+        // classe base, non soltanto chiuse.
+        //
+        // `Mockery::close()` verifica le aspettative e libera Mockery, ma non
+        // disinstalla il finto dalla facade: `DB` resta un mock stretto anche
+        // dopo. E la chiusura di `DatabaseTransactions`, dentro
+        // `parent::tearDown()`, annulla le transazioni scorrendo
+        // `DB::getConnections()` — una chiamata che nessun test ha previsto,
+        // quindi:
+        //
+        //     BadMethodCallException: Received
+        //     Mockery_..._DatabaseManager::getConnections(), but no
+        //     expectations were specified
+        //
+        // Il fallimento arrivava **dopo** il corpo del test, da
+        // XotBaseTestCase.php:230, e accusava il teardown di una cosa che aveva
+        // fatto il test. `clearResolvedInstances()` rimette le facade vere in
+        // circolazione prima che la classe base le usi
+        // (base_quaeris_fila5#241).
+        DB::clearResolvedInstances();
+        Config::clearResolvedInstances();
+
         \Mockery::close();
         parent::tearDown();
     }
