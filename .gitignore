@@ -83,3 +83,6 @@ cache/
 tests/AuditCoverage/
 audit-coverage/
 .claude-audit/
+
+# graphify lanciato su tests/ scrive tests/graphify-out/: output rigenerabile, mai committare
+tests/graphify-out/
